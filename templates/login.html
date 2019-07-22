@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <p>If you don't have an account, please <a href="/register">register</a> for one.</p>
+
+    <form action="/login" method="POST">
+    <table>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password"></td>
+        </tr>        
+    </table>
+    <input type="submit" value="Login">
+    </form>
+
+{% endblock %}

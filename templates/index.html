@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if users|length == 0 %}
+        <p>This blog has as many users as Google+.</p>
+    {% else %}
+        {% for user in users %}
+            <h2 class="link"><a href="/showuserentries?id={{user.id}}">{{user.email}}</a></h2>            
+        {% endfor %}
+    {% endif %}
+{% endblock %}

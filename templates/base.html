@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Text|Rock+Salt|Signika" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+    <body>
+        <a href="/" class="link">Home</a>
+        <a href="/blog" class="link">Main blog page</a>
+        {% if user_logged_in %}a
+            {% if not hide_new %}
+                <a class="link" href="/createnew">New entry</a>
+            {% endif %}
+            <a class="link" href="/logout">Log out</a>
+        {% else %}
+            <a class="link" href ="/login">Log in</a>
+            <a class="link" href ="/register">Sign up</a>
+        {% endif %}
+        
+        <section id="title">{{title}}</section>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% for category, message in messages %}
+                <p class="{{category}}">{{message}}</p>
+            {% endfor %}
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
